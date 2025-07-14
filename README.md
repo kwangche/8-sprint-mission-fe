@@ -3,6 +3,7 @@ https://kaleidoscopic-starlight-053c56.netlify.app/
 # 프로젝트 변경 이력
 
 ## 📅 2025-07-14
+- 헤더, 푸터 좌우간격 여백설정 및 클릭요소 포인터 추가
 - README 변경이력 추가
 
 ## 📅 2025-07-11
