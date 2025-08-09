@@ -9,6 +9,7 @@
 
 .footer_wrap {
   width: calc(100% - 400px);
+  margin: 0 auto;
   padding: 2rem 0;
   display: flex;
   justify-content: space-between;

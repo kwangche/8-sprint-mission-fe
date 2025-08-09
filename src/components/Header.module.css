@@ -15,7 +15,7 @@ a {
   max-width: 1120px;
 }
 
-#root {
+div:has(> .header) {
   width: 100%;
   padding-top: var(--header-height);
 }
@@ -24,6 +24,7 @@ a {
 .header {
   position: fixed;
   top: 0;
+  z-index: 1;
   width: 100%;
   height: var(--header-height);
   background-color: var(--color-white);
@@ -31,7 +32,7 @@ a {
 }
 
 .header-wrap {
-  width: calc(100% - 400px);
+  /* width: calc(100% - 400px); */
   height: inherit;
   display: flex;
   align-items: center;
@@ -57,6 +58,16 @@ a {
   color: var(--color-primary);
 }
 
+nav {
+  display: flex;
+  width: 70%;
+  a {
+    font-size: 18px;
+    font-weight: 700;
+    padding: 0 15px;
+  }
+}
+
 .login-btn {
   display: flex;
   width: 8rem;
@@ -72,6 +83,12 @@ a {
   cursor: pointer;
 }
 
+.user {
+  display: none;
+  width: 40px;
+  height: 40px;
+}
+
 /* ############################## media-query ############################## */
 @media (max-width: 1199px) {
   /* 1200px 이하 */
@@ -85,11 +102,23 @@ a {
     .header-wrap {
       padding: 0 16px;
     }
+
     .logo {
       gap: 8px;
     }
+
     .logo img {
       display: none;
+    }
+
+    .login-btn {
+      display: none;
+    }
+
+    .user {
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
   }
 }

@@ -98,6 +98,7 @@ label {
 }
 
 /* ############################## alert-box ############################## */
+
 .overlay {
   position: fixed;
   z-index: 9999;
@@ -106,11 +107,16 @@ label {
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.7);
-  display: none; /* flex */
+  display: none;
   justify-content: center;
   align-items: center;
   transition: all 0.3s;
   opacity: 0;
+}
+
+.overlay.show {
+  display: flex;
+  opacity: 1;
 }
 
 .overlay-content {

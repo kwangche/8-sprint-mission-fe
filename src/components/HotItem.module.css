@@ -10,11 +10,12 @@
 }
 
 .hot-item-wrap {
-  min-width: 988px;
+  max-width: 988px;
+  margin: 0 auto;
   display: flex;
   justify-content: space-around;
   align-items: center;
-  width: auto;
+  width: 100%;
   background-color: var(--color-bg);
   cursor: pointer;
 }

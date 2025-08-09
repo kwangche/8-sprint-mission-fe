@@ -92,6 +92,7 @@ const LoginForm = () => {
         <button
           className={isFormValid ? `${styles['form-btn']} ${styles.active}` : styles['form-btn']}
           type="submit"
+          disabled={!isFormValid}
         >
           로그인
         </button>

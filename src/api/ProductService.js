@@ -1,23 +1,21 @@
 import axios from 'axios';
 
 const instance = axios.create({
-  baseURL: 'https://panda-market-api-crud.vercel.app',
+  baseURL: 'https://panda-market-api.vercel.app',
 });
 
 export async function getProductList(params = {}) {
-  const res = await instance.get('/Products', {
-    params,
-  });
-  return res.data;
+  const res = await instance.get('/products', { params });
+  return res.data.list;
 }
 
 export async function getProduct(id) {
-  const res = await instance.get(`/Products/${id}`);
+  const res = await instance.get(`/products/${id}`);
   return res.data;
 }
 
 export async function createProduct(params = {}) {
-  const res = await instance.post('/Products', {
+  const res = await instance.post('/products', {
     name: params.name,
     description: params.description,
     tags: params.tags,
@@ -28,11 +26,11 @@ export async function createProduct(params = {}) {
 }
 
 export async function patchProduct(id, productData) {
-  const res = await instance.patch(`/Products/${id}`, productData);
+  const res = await instance.patch(`/products/${id}`, productData);
   return res.data;
 }
 
 export async function deleteProduct(id) {
-  const res = await instance.delete(`/Products/${id}`);
+  const res = await instance.delete(`/products/${id}`);
   return res.data;
 }
