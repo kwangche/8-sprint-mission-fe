@@ -1,13 +1,9 @@
-import React from 'react';
+import React, { PropsWithChildren } from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 // import AuthHeader from '@/components/auth/AuthHeader';
 
-interface LayoutProps {
-  children: React.ReactNode;
-}
-
-export function DefaultLayout({ children }: LayoutProps) {
+export function DefaultLayout({ children }: PropsWithChildren) {
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
@@ -17,7 +13,7 @@ export function DefaultLayout({ children }: LayoutProps) {
   );
 }
 
-export function AuthLayout({ children }: LayoutProps) {
+export function AuthLayout({ children }: PropsWithChildren) {
   return (
     <div className="min-h-screen flex items-center justify-center px-4">
       <div className="w-full max-w-[540px] mx-auto">

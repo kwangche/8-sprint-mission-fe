@@ -9,7 +9,7 @@ import { useSignUpMutation } from '@/hooks/useAuthMutations';
 import { getRefreshToken } from '@/lib/authStorage';
 import Toast from '@/components/Toast';
 import AuthInput from '@/components/auth/AuthInput';
-import { signupSchema, type SignupFormData } from '@/schema/validationSchemas';
+import { signupSchema, type SignupFormData } from '@/types/validationSchemas';
 
 export default function SignupPage() {
   const router = useRouter();

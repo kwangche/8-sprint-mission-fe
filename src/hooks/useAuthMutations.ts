@@ -4,38 +4,31 @@ import { useMutation, UseMutationOptions } from '@tanstack/react-query';
 
 import { signIn, signUp, signOut, refreshAccessToken } from '@/lib/authApi';
 import { saveRefreshToken } from '@/lib/authStorage';
+import type {
+  SignUpData,
+  SignInData,
+  RefreshTokenData,
+  SignUpResponse,
+  SignInResponse,
+  RefreshTokenResponse,
+  SignOutResponse,
+} from '@/types';
 
-interface SignUpParams {
-  email: string;
-  nickname: string;
-  password: string;
-}
-
-interface SignInParams {
-  email: string;
-  password: string;
-}
-
-interface RefreshTokenParams {
-  refreshToken: string;
-}
-
-export function useSignUpMutation(options?: UseMutationOptions<any, Error, SignUpParams>) {
-  const signUpMutation = useMutation({
+export function useSignUpMutation(options?: UseMutationOptions<SignUpResponse, Error, SignUpData>) {
+  return useMutation({
     mutationKey: ['auth', 'signup'],
-    mutationFn: async ({ email, nickname, password }: SignUpParams) => {
+    mutationFn: async ({ email, nickname, password }: SignUpData) => {
       const res = await signUp({ email, nickname, password });
       return res;
     },
     ...options,
   });
-  return signUpMutation;
 }
 
-export function useSignInMutation(options?: UseMutationOptions<any, Error, SignInParams>) {
-  const signInMutation = useMutation({
+export function useSignInMutation(options?: UseMutationOptions<SignInResponse, Error, SignInData>) {
+  return useMutation({
     mutationKey: ['auth', 'signin'],
-    mutationFn: async ({ email, password }: SignInParams) => {
+    mutationFn: async ({ email, password }: SignInData) => {
       const res = await signIn({ email, password });
       if (res?.refreshToken) {
         saveRefreshToken(res.refreshToken);
@@ -44,30 +37,27 @@ export function useSignInMutation(options?: UseMutationOptions<any, Error, SignI
     },
     ...options,
   });
-  return signInMutation;
 }
 
-export function useSignOutMutation(options?: UseMutationOptions<any, Error, void>) {
-  const signOutMutation = useMutation({
+export function useSignOutMutation(options?: UseMutationOptions<SignOutResponse, Error, void>) {
+  return useMutation({
     mutationKey: ['auth', 'signout'],
     mutationFn: async () => {
       return signOut();
     },
     ...options,
   });
-  return signOutMutation;
 }
 
 export function useRefreshTokenMutation(
-  options?: UseMutationOptions<any, Error, RefreshTokenParams>,
+  options?: UseMutationOptions<RefreshTokenResponse, Error, RefreshTokenData>,
 ) {
-  const refreshTokenMutation = useMutation({
+  return useMutation({
     mutationKey: ['auth', 'refresh'],
-    mutationFn: async ({ refreshToken }: RefreshTokenParams) => {
+    mutationFn: async ({ refreshToken }: RefreshTokenData) => {
       const res = await refreshAccessToken(refreshToken);
       return res;
     },
     ...options,
   });
-  return refreshTokenMutation;
 }

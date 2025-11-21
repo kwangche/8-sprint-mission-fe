@@ -10,7 +10,7 @@ import { getRefreshToken } from '@/lib/authStorage';
 import { useAuth } from '@/providers/AuthProvider';
 import Toast from '@/components/Toast';
 import AuthInput from '@/components/auth/AuthInput';
-import { loginSchema, type LoginFormData } from '@/schema/validationSchemas';
+import { loginSchema, type LoginFormData } from '@/types/validationSchemas';
 
 export default function LoginPage() {
   const router = useRouter();

@@ -56,6 +56,8 @@ const AuthInput = forwardRef<HTMLInputElement, AuthInputProps>(function AuthInpu
               }
               alt="toggle visibility"
               className="w-6 h-6"
+              width={24}
+              height={24}
             />
           </button>
         )}

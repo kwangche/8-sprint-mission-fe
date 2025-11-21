@@ -1,55 +1,14 @@
 import { api } from './apiClient';
-
-interface SignUpData {
-  email: string;
-  nickname: string;
-  password: string;
-}
-
-interface SignInData {
-  email: string;
-  password: string;
-}
-
-interface SignUpResponse {
-  message?: string;
-  user?: {
-    id: string;
-    email: string;
-    nickname: string;
-  };
-}
-
-interface SignInResponse {
-  message?: string;
-  user?: {
-    id: string;
-    email: string;
-    nickname?: string;
-  };
-  refreshToken?: string;
-}
-
-interface RefreshTokenResponse {
-  message?: string;
-  user?: {
-    id: string;
-    email: string;
-    nickname?: string;
-  };
-}
-
-interface User {
-  id: string;
-  email: string;
-  nickname?: string;
-  [key: string]: unknown;
-}
-
-interface UpdateUserData {
-  nickname?: string;
-  [key: string]: unknown;
-}
+import type {
+  User,
+  UpdateUserData,
+  SignUpData,
+  SignInData,
+  SignUpResponse,
+  SignInResponse,
+  RefreshTokenResponse,
+  SignOutResponse,
+} from '@/types';
 
 // 회원가입
 export async function signUp({ email, nickname, password }: SignUpData) {
@@ -63,7 +22,7 @@ export async function signIn({ email, password }: SignInData) {
 
 // 로그아웃
 export async function signOut() {
-  return api.post<{ message?: string }>('/auth/logout', {});
+  return api.post<SignOutResponse>('/auth/logout', {});
 }
 
 // 토큰 갱신
@@ -83,5 +42,5 @@ export async function updateUser(userId: string, data: UpdateUserData) {
 
 // 사용자 삭제
 export async function deleteUser(userId: string) {
-  return api.delete<{ message?: string }>(`/auth/${userId}`, { auth: true });
+  return api.delete<SignOutResponse>(`/auth/${userId}`, { auth: true });
 }

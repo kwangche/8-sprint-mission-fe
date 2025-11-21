@@ -8,16 +8,11 @@ import {
   useCallback,
   useState,
   useRef,
+  PropsWithChildren,
 } from 'react';
 import { getRefreshToken, clearTokens } from '@/lib/authStorage';
 import { refreshAccessToken } from '@/lib/authApi';
-
-interface User {
-  id: string;
-  email: string;
-  nickname?: string;
-  [key: string]: unknown;
-}
+import type { User } from '@/types';
 
 interface AuthContextType {
   user: User | null;
@@ -28,10 +23,6 @@ interface AuthContextType {
   refreshToken: () => Promise<boolean>;
 }
 
-interface AuthProviderProps {
-  children: React.ReactNode;
-}
-
 const AuthContext = createContext<AuthContextType | null>(null);
 
 export function useAuth() {
@@ -40,7 +31,7 @@ export function useAuth() {
   return ctx;
 }
 
-export default function AuthProvider({ children }: AuthProviderProps) {
+export default function AuthProvider({ children }: PropsWithChildren) {
   // 로그인 응답의 user 정보를 저장
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(false);
