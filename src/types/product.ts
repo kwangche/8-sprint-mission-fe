@@ -2,7 +2,7 @@ import { User } from './user';
 
 // 상품 기본 타입
 export interface Product {
-  id: string | number;
+  id: string;
   name: string;
   description: string | null;
   price: number;
@@ -12,8 +12,7 @@ export interface Product {
   createdAt: string;
   updatedAt: string;
   ownerNickname?: string;
-  owner?: User;
-  isFavorite?: boolean;
+  user?: User;
   isLiked?: boolean;
 }
 

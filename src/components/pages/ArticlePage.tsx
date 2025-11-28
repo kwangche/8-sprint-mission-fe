@@ -18,7 +18,7 @@ export default function ArticlePage() {
     getArticles({
       page: 1,
       limit: 20,
-      sort: sortBy as 'recent' | 'favorite',
+      orderBy: sortBy as 'recent' | 'favorite',
       search: searchTerm,
     }).catch((e) => {
       console.error('게시글 목록 로드 실패', e);

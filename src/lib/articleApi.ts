@@ -20,7 +20,7 @@ export const getArticles = async (params: ArticleParams = {}): Promise<ArticlesR
   const searchParams = new URLSearchParams();
   if (params.page) searchParams.append('page', params.page.toString());
   if (params.limit) searchParams.append('limit', params.limit.toString());
-  if (params.sort) searchParams.append('sort', params.sort);
+  if (params.orderBy) searchParams.append('orderBy', params.orderBy);
   if (params.search) searchParams.append('search', params.search);
   const response = await api.get(`/articles?${searchParams.toString()}`);
   return articlesResponseSchema.parse(response);
@@ -30,7 +30,7 @@ export const getArticles = async (params: ArticleParams = {}): Promise<ArticlesR
  * 베스트 게시글 조회 (좋아요 많은 순)
  */
 export const getBestArticles = async (): Promise<ArticlesResponse> => {
-  const response = await api.get('/articles?limit=3&sort=favorite');
+  const response = await api.get('/articles?limit=3&orderBy=favorite');
   return articlesResponseSchema.parse(response);
 };
 
@@ -71,7 +71,7 @@ export const getArticlesSorted = async (
   additionalParams: ArticleParams = {},
 ): Promise<ArticlesResponse> => {
   return getArticles({
-    sort: sortBy,
+    orderBy: sortBy,
     ...additionalParams,
   });
 };

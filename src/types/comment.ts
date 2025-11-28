@@ -7,9 +7,9 @@ export interface Comment {
   createdAt: string;
   updatedAt: string;
   writer: User;
-  user: User;
-  productId?: string;
-  articleId?: string;
+  user?: User;
+  productId?: string | null;
+  articleId?: string | null;
 }
 
 // 댓글 생성 데이터

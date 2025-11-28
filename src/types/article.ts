@@ -2,7 +2,7 @@ import { User } from './user';
 
 // 게시글 기본 타입
 export interface Article {
-  id: string | number;
+  id: string;
   title: string;
   content: string;
   image?: string;
@@ -11,8 +11,6 @@ export interface Article {
   createdAt: string;
   updatedAt: string;
   writer: User;
-  isFavorite?: boolean;
-  likes?: number;
   isLiked?: boolean;
 }
 
@@ -42,7 +40,7 @@ export interface ArticlesResponse {
 export interface ArticleParams {
   page?: number;
   limit?: number;
-  sort?: 'recent' | 'favorite';
+  orderBy?: 'recent' | 'favorite';
   search?: string;
 }
 

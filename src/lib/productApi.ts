@@ -14,16 +14,16 @@ export const getProducts = async (params: ProductParams = {}): Promise<Product[]
 
   const response = await api.get(`/products?${searchParams.toString()}`);
   const validated = productsResponseSchema.parse(response);
-  return validated?.list || validated?.products || [];
+  return validated.list || [];
 };
 
-/**
+/** 
  * 베스트 상품 조회 (좋아요 많은 순)
  */
 export const getBestProducts = async (): Promise<Product[]> => {
   const response = await api.get('/products?orderBy=favorite&pageSize=4');
   const validated = productsResponseSchema.parse(response);
-  return validated?.list || validated?.products || [];
+  return validated.list || [];
 };
 
 /**

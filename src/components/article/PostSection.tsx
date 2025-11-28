@@ -45,7 +45,7 @@ export default function PostSection({
           placeholder="검색할 게시글을 입력해주세요"
           sortOptions={[
             { value: 'recent', label: '최신순' },
-            { value: 'likes', label: '인기순' },
+            { value: 'favorite', label: '인기순' },
           ]}
         />
 
