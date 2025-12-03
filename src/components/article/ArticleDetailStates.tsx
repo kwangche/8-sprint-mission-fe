@@ -1,7 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import FavoriteButton from '@/components/product/FavoriteButton';
-import { formatCreatedAt } from '@/utils/dateFormatter';
+import { formatCreatedAt } from '@/utils/formatter';
 import { Article } from '@/types/article';
 
 /**

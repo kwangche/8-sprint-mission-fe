@@ -2,16 +2,13 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Product } from '@/types';
+import { formatPrice } from '@/utils/formatter';
 
 interface ProductItemProps {
   product: Product;
 }
 
 const ProductItem = ({ product }: ProductItemProps) => {
-  const formatPrice = (price: number) => {
-    return new Intl.NumberFormat('ko-KR').format(price);
-  };
-
   return (
     <Link href={`/items/${product.id}`} className="block group">
       <div className="relative w-full aspect-square rounded-2xl overflow-hidden bg-gray-100 mb-4">
