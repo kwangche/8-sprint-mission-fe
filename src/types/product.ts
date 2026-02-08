@@ -12,8 +12,10 @@ export interface Product {
   createdAt: string;
   updatedAt: string;
   ownerNickname?: string;
+  owner?: User;
   user?: User;
   isLiked?: boolean;
+  isFavorite?: boolean;
 }
 
 // 상품 생성 데이터

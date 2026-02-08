@@ -1,5 +1,5 @@
 import { api } from './apiClient';
-import {
+import type {
   Article,
   ArticlesResponse,
   CreateArticleData,
@@ -12,18 +12,36 @@ import {
   articlesResponseSchema,
   articleFavoriteResponseSchema,
 } from '@/schemas';
+import { buildQueryParams } from '@/lib/queryParams';
+
+const normalizeArticle = (article: Article) => ({
+  ...article,
+  isFavorite: article.isFavorite ?? article.isLiked ?? false,
+});
+
+const normalizeArticlesResponse = (response: ArticlesResponse): ArticlesResponse => {
+  const list = response.articles || response.list || [];
+  const normalized = list.map(normalizeArticle);
+  return {
+    ...response,
+    articles: normalized,
+    list: normalized,
+  };
+};
 
 /**
  * 게시글 목록 조회
  */
 export const getArticles = async (params: ArticleParams = {}): Promise<ArticlesResponse> => {
-  const searchParams = new URLSearchParams();
-  if (params.page) searchParams.append('page', params.page.toString());
-  if (params.limit) searchParams.append('limit', params.limit.toString());
-  if (params.orderBy) searchParams.append('orderBy', params.orderBy);
-  if (params.search) searchParams.append('search', params.search);
-  const response = await api.get(`/articles?${searchParams.toString()}`);
-  return articlesResponseSchema.parse(response);
+  const query = buildQueryParams({
+    page: params.page,
+    limit: params.limit,
+    orderBy: params.orderBy,
+    search: params.search,
+  });
+  const response = await api.get(`/articles${query ? `?${query}` : ''}`);
+  const parsed = articlesResponseSchema.parse(response);
+  return normalizeArticlesResponse(parsed);
 };
 
 /**
@@ -31,7 +49,8 @@ export const getArticles = async (params: ArticleParams = {}): Promise<ArticlesR
  */
 export const getBestArticles = async (): Promise<ArticlesResponse> => {
   const response = await api.get('/articles?limit=3&orderBy=favorite');
-  return articlesResponseSchema.parse(response);
+  const parsed = articlesResponseSchema.parse(response);
+  return normalizeArticlesResponse(parsed);
 };
 
 /**
@@ -39,7 +58,7 @@ export const getBestArticles = async (): Promise<ArticlesResponse> => {
  */
 export const getArticleById = async (articleId: string | number): Promise<Article> => {
   const response = await api.get(`/articles/${articleId}`);
-  return articleSchema.parse(response);
+  return normalizeArticle(articleSchema.parse(response));
 };
 
 /**
@@ -47,7 +66,7 @@ export const getArticleById = async (articleId: string | number): Promise<Articl
  */
 export const createArticle = async (articleData: CreateArticleData): Promise<Article> => {
   const response = await api.post('/articles', articleData, { auth: true });
-  return articleSchema.parse(response);
+  return normalizeArticle(articleSchema.parse(response));
 };
 
 /**
@@ -84,7 +103,7 @@ export const updateArticle = async (
   articleData: UpdateArticleData,
 ): Promise<Article> => {
   const response = await api.patch(`/articles/${articleId}`, articleData, { auth: true });
-  return articleSchema.parse(response);
+  return normalizeArticle(articleSchema.parse(response));
 };
 
 /**

@@ -1,6 +1,10 @@
-import { api } from './apiClient';
 import { Comment, CreateCommentData, UpdateCommentData, CommentParams } from '@/types';
-import { commentSchema, commentsResponseSchema } from '@/schemas';
+import {
+  createComment,
+  getComments,
+  updateComment as updateSharedComment,
+  deleteComment as deleteSharedComment,
+} from '@/lib/commentApi';
 
 // ============================================
 // 자유게시판 댓글 관련 API
@@ -13,8 +17,7 @@ export const createArticleComment = async (
   articleId: string | number,
   commentData: CreateCommentData,
 ): Promise<Comment> => {
-  const response = await api.post(`/comments/article/${articleId}`, commentData, { auth: true });
-  return commentSchema.parse(response);
+  return createComment('article', articleId, commentData);
 };
 
 /**
@@ -24,15 +27,7 @@ export const getArticleComments = async (
   articleId: string | number,
   params: CommentParams = {},
 ): Promise<Comment[]> => {
-  const searchParams = new URLSearchParams();
-  if (params.limit) searchParams.append('limit', params.limit.toString());
-  if (params.cursor) searchParams.append('cursor', params.cursor.toString());
-
-  const response = await api.get(
-    `/comments/article/${articleId}?${searchParams.toString()}`,
-  );
-  const validated = commentsResponseSchema.parse(response);
-  return validated?.list || validated?.comments || [];
+  return getComments('article', articleId, params);
 };
 
 /**
@@ -42,13 +37,12 @@ export const updateComment = async (
   commentId: string | number,
   commentData: UpdateCommentData,
 ): Promise<Comment> => {
-  const response = await api.patch(`/comments/${commentId}`, commentData, { auth: true });
-  return commentSchema.parse(response);
+  return updateSharedComment(commentId, commentData);
 };
 
 /**
  * 댓글 삭제
  */
 export const deleteComment = async (commentId: string | number): Promise<void> => {
-  await api.delete(`/comments/${commentId}`, { auth: true });
+  await deleteSharedComment(commentId);
 };

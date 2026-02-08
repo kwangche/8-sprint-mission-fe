@@ -56,7 +56,10 @@ export default function ArticleProvider({ children }: ArticleProviderProps) {
   const [error, setError] = useState<string | null>(null);
 
   // 공통: 목록 응답 정규화
-  const toList = useCallback((response: ArticlesResponse) => response?.articles || [], []);
+  const toList = useCallback(
+    (response: ArticlesResponse) => response?.articles || response?.list || [],
+    [],
+  );
 
   const handleError = useCallback((err: unknown, message: string) => {
     console.error(message, err);
