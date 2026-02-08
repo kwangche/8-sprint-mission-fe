@@ -1,18 +1,17 @@
-  User,
-  UpdateUserData,
-  SignUpData,
-  SignInData,
-  SignUpResponse,
-  SignInResponse,
+import { refreshTokenResponseSchema, signInResponseSchema, signUpResponseSchema, userSchema } from '@/schemas';
+
+import { api } from './apiClient';
+
+import type {
   RefreshTokenResponse,
+  SignInData,
+  SignInResponse,
   SignOutResponse,
+  SignUpData,
+  SignUpResponse,
+  UpdateUserData,
+  User,
 } from '@/types';
-import {
-  signUpResponseSchema,
-  signInResponseSchema,
-  refreshTokenResponseSchema,
-  userSchema,
-} from '@/schemas';
 
 // 회원가입
 export async function signUp({ email, nickname, password }: SignUpData) {
