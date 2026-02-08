@@ -1,10 +1,11 @@
-import type { CreateCommentData, UpdateCommentData, CommentParams } from '@/types';
-
+import {
   createComment,
+  deleteComment as deleteSharedComment,
   getComments,
   updateComment as updateSharedComment,
-  deleteComment as deleteSharedComment,
 } from '@/lib/commentApi';
+
+import type { Comment, CommentParams, CreateCommentData, UpdateCommentData } from '@/types';
 
 // ============================================
 // 상품 댓글 관련 API

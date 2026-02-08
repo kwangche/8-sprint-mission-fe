@@ -1,16 +1,16 @@
+import { articleFavoriteResponseSchema, articleSchema, articlesResponseSchema } from '@/schemas';
+import { buildQueryParams } from '@/lib/queryParams';
+
+import { api } from './apiClient';
+
+import type {
   Article,
+  ArticleFavoriteResponse,
+  ArticleParams,
   ArticlesResponse,
   CreateArticleData,
   UpdateArticleData,
-  ArticleParams,
-  ArticleFavoriteResponse,
 } from '@/types';
-import {
-  articleSchema,
-  articlesResponseSchema,
-  articleFavoriteResponseSchema,
-} from '@/schemas';
-import { buildQueryParams } from '@/lib/queryParams';
 
 const normalizeArticle = (article: Article) => ({
   ...article,

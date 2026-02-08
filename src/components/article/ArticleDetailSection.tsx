@@ -3,10 +3,12 @@
 import { useEffect, useState } from 'react';
 import { useArticles } from '@/providers/ArticleProvider';
 import { useAuth } from '@/providers/AuthProvider';
+import DropdownMenu from '@/components/DropdownMenu';
 
-  ArticleDetailLoading,
-  ArticleDetailError,
+import {
   ArticleDetailContent,
+  ArticleDetailError,
+  ArticleDetailLoading,
 } from './ArticleDetailStates';
 
 interface ArticleDetailSectionProps {

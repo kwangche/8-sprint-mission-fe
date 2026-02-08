@@ -9,7 +9,7 @@ import { useAuth } from '@/providers/AuthProvider';
 export default function Header() {
   const router = useRouter();
   const pathname = usePathname();
-  const { user, loading, logout } = useAuth();
+  const { user, loading } = useAuth();
 
   const navLinks = [
     {

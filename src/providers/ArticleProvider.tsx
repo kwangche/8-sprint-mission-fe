@@ -1,14 +1,16 @@
 'use client';
 
-import { useContext, useMemo, useCallback, useState, ReactNode } from 'react';
+import { useCallback, useContext, useMemo, useState } from 'react';
 import * as articleService from '@/lib/articleApi';
 
+import type { ReactNode } from 'react';
+import type {
   Article,
+  ArticleFavoriteResponse,
   ArticleParams,
   ArticlesResponse,
   CreateArticleData,
   UpdateArticleData,
-  ArticleFavoriteResponse,
 } from '@/types';
 
 interface ArticleContextValue {
