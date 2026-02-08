@@ -1,10 +1,12 @@
-import React from 'react';
-import { useRouter } from 'next/navigation';
 
+
+import { useRouter } from 'next/navigation';
 import Button from '@/components/Button';
-import PostItem from '@/components/article/PostItem';
 import SearchAndSort from '@/components/SearchAndSort';
-import { Article } from '@/types';
+import PostItem from '@/components/article/PostItem';
+
+import type { Article } from '@/types';
+
 interface PostSectionProps {
   items: Article[];
   searchTerm: string;

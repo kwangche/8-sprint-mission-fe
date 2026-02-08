@@ -1,6 +1,5 @@
-import {
+import type { CreateCommentData, UpdateCommentData, CommentParams } from '@/types';
 
-import { Comment, CreateCommentData, UpdateCommentData, CommentParams } from '@/types';
   createComment,
   getComments,
   updateComment as updateSharedComment,

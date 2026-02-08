@@ -1,9 +1,12 @@
+
+
 import Image from 'next/image';
 import React from 'react';
-
 import FavoriteButton from '@/components/product/FavoriteButton';
-import { Article } from '@/types/article';
 import { formatCreatedAt } from '@/utils/formatter';
+
+import type { Article } from '@/types/article';
+
 /**
  * 로딩 상태 컴포넌트
  */

@@ -1,4 +1,5 @@
 import { z } from 'zod';
+
 // 이메일 검증 스키마
 const emailSchema = z
   .string()

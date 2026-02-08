@@ -1,4 +1,5 @@
 import ArticleDetailPage from '@/components/pages/ArticleDetailPage';
+
 interface ArticleDetailProps {
   params: Promise<{
     id: string;

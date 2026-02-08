@@ -1,4 +1,5 @@
 import Image from 'next/image';
+
 const SocialLogin = () => {
   return (
     <div className="mt-2 p-3 bg-[var(--cool-gray)] rounded-lg flex items-center justify-between">

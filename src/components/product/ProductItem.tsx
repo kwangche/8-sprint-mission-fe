@@ -1,9 +1,11 @@
+
+
 import Image from 'next/image';
 import Link from 'next/link';
-import React from 'react';
-
-import { Product } from '@/types';
 import { formatPrice } from '@/utils/formatter';
+
+import type { Product } from '@/types';
+
 interface ProductItemProps {
   product: Product;
 }

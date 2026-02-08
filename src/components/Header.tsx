@@ -3,9 +3,9 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter, usePathname } from 'next/navigation';
-
 import Button from '@/components/Button';
 import { useAuth } from '@/providers/AuthProvider';
+
 export default function Header() {
   const router = useRouter();
   const pathname = usePathname();

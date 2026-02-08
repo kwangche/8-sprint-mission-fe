@@ -1,11 +1,10 @@
 'use client';
 
 import Image from 'next/image';
-import React from 'react';
-
 import Button from '@/components/Button';
 import DropdownMenu from '@/components/DropdownMenu';
 import { useCommentSection } from '@/hooks/useCommentSection';
+
 interface ProductCommentSectionProps {
   productId: string;
 }

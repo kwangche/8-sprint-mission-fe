@@ -1,8 +1,11 @@
-import { useState, useEffect, useCallback } from 'react';
 
-import { Comment } from '@/types';
+
+import { useState, useEffect, useCallback } from 'react';
 import { useAuth } from '@/providers/AuthProvider';
 import { useComments } from '@/providers/CommentProvider';
+
+import type { Comment } from '@/types';
+
 /**
  * 댓글 섹션 로직을 관리하는 커스텀 훅
  */

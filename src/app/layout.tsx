@@ -1,10 +1,14 @@
+
+
+import './globals.css';
+
+import './globals.css';
 import { Geist, Geist_Mono } from 'next/font/google';
 import { PropsWithChildren } from 'react';
+import Providers from './providers';
 
 import type { Metadata } from 'next';
 
-import './globals.css';
-import Providers from './providers';
 // import Providers from './providers';
 
 const geistSans = Geist({

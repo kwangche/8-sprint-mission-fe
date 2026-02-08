@@ -1,8 +1,11 @@
-import { Comment, CreateCommentData, UpdateCommentData, CommentParams } from '@/types';
+
+
 import { buildQueryParams } from '@/lib/queryParams';
 import { commentSchema, commentsResponseSchema } from '@/schemas';
-
 import { api } from './apiClient';
+
+import type { Comment, CreateCommentData, UpdateCommentData, CommentParams } from '@/types';
+
 type CommentResource = 'article' | 'product';
 
 export async function createComment(

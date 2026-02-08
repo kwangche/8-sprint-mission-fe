@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import React, { forwardRef } from 'react';
+
 // 지원 variant 목록 (appearance -> variant 명칭 통일)
 const VARIANTS = ['primary', 'secondary', 'outline'] as const;
 

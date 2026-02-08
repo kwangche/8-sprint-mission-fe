@@ -1,9 +1,11 @@
+
+
 import { buildQueryParams } from '@/lib/queryParams';
 import { productSchema, productsResponseSchema, productFavoriteResponseSchema } from '@/schemas';
+import { api, BASE_URL } from './apiClient';
 
 import type { Product, ProductParams, User } from '@/types';
 
-import { api, BASE_URL } from './apiClient';
 const normalizeImageUrl = (url: string) => {
   if (!url) return url;
   if (url.startsWith('http://') || url.startsWith('https://')) return url;

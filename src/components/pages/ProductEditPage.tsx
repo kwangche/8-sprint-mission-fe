@@ -2,13 +2,13 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import React, { useState, useEffect, ChangeEvent, FormEvent } from 'react';
 import { useRouter } from 'next/navigation';
-
+import { useState, useEffect, ChangeEvent, FormEvent } from 'react';
 import Button from '@/components/Button';
 import { getProduct, createProduct, updateProduct } from '@/lib/productApi';
 import { uploadImages } from '@/lib/uploadApi';
 import { useAuth } from '@/providers/AuthProvider';
+
 interface ProductEditPageProps {
   productId?: number;
 }

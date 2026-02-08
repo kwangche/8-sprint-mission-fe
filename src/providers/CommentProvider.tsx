@@ -1,10 +1,11 @@
 'use client';
 
 import { createContext, useContext, useState, useMemo, useCallback, ReactNode } from 'react';
-
 import * as articleCommentService from '@/lib/articleCommentApi';
 import * as productCommentService from '@/lib/productCommentApi';
-import { Comment, CreateCommentData, UpdateCommentData, CommentParams } from '@/types';
+
+import type { Comment, CreateCommentData, UpdateCommentData, CommentParams } from '@/types';
+
 interface CommentContextValue {
   comments: Comment[];
   loading: boolean;
