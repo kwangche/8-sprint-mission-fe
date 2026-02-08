@@ -1,5 +1,4 @@
 import ProductDetailPage from '@/components/pages/ProductDetailPage';
-
 interface ItemDetailPageProps {
   params: Promise<{
     id: string;

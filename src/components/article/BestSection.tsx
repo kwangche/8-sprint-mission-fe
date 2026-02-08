@@ -1,8 +1,8 @@
 import React from 'react';
-import BestItem from '@/components/article/BestItem';
 import { useRouter } from 'next/navigation';
-import { Article } from '@/types';
 
+import BestItem from '@/components/article/BestItem';
+import { Article } from '@/types';
 interface BestSectionProps {
   items: Article[];
 }

@@ -1,11 +1,11 @@
 'use client';
 
-import React from 'react';
 import Link from 'next/link';
-import Button from '@/components/Button';
-import ArticleDetailSection from '@/components/article/ArticleDetailSection';
-import ArticleCommentSection from '@/components/article/ArticleCommentSection';
+import React from 'react';
 
+import ArticleCommentSection from '@/components/article/ArticleCommentSection';
+import ArticleDetailSection from '@/components/article/ArticleDetailSection';
+import Button from '@/components/Button';
 interface ArticleDetailPageProps {
   articleId: string;
 }

@@ -1,13 +1,13 @@
 'use client';
 
-import { useState, PropsWithChildren } from 'react';
-import ArticleProvider from '@/providers/ArticleProvider';
-import CommentProvider from '@/providers/CommentProvider';
-import AuthProvider from '@/providers/AuthProvider';
-import { ProductProvider } from '@/providers/ProductProvider';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+import { useState, PropsWithChildren } from 'react';
 
+import ArticleProvider from '@/providers/ArticleProvider';
+import AuthProvider from '@/providers/AuthProvider';
+import CommentProvider from '@/providers/CommentProvider';
+import { ProductProvider } from '@/providers/ProductProvider';
 export default function Providers({ children }: PropsWithChildren) {
   // 한 번만 생성하여 리렌더 시 동일 인스턴스 재사용
   const [queryClient] = useState(

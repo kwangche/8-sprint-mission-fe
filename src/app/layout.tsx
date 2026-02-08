@@ -1,6 +1,7 @@
 import { Geist, Geist_Mono } from 'next/font/google';
-import type { Metadata } from 'next';
 import { PropsWithChildren } from 'react';
+
+import type { Metadata } from 'next';
 
 import './globals.css';
 import Providers from './providers';

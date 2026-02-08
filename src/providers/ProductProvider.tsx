@@ -1,8 +1,8 @@
 'use client';
 import React, { createContext, useContext, useState, useCallback, useMemo, ReactNode } from 'react';
-import { getProducts, getBestProducts } from '@/lib/productApi';
-import { Product, ProductParams } from '@/types';
 
+import { Product, ProductParams } from '@/types';
+import { getProducts, getBestProducts } from '@/lib/productApi';
 interface ProductContextValue {
   products: Product[];
   bestProducts: Product[];

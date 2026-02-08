@@ -1,16 +1,16 @@
 'use client';
-import { useEffect, useState } from 'react';
-import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { useRouter } from 'next/navigation';
 import { zodResolver } from '@hookform/resolvers/zod';
-import SocialLogin from '@/components/auth/SocialLogin';
-import { useSignUpMutation } from '@/hooks/useAuthMutations';
-import { getRefreshToken } from '@/lib/authStorage';
-import Toast from '@/components/Toast';
-import AuthInput from '@/components/auth/AuthInput';
-import { signupSchema, type SignupFormData } from '@/types/validationSchemas';
 
+import AuthInput from '@/components/auth/AuthInput';
+import SocialLogin from '@/components/auth/SocialLogin';
+import Toast from '@/components/Toast';
+import { getRefreshToken } from '@/lib/authStorage';
+import { signupSchema, type SignupFormData } from '@/types/validationSchemas';
+import { useSignUpMutation } from '@/hooks/useAuthMutations';
 export default function SignupPage() {
   const router = useRouter();
   const [alert, setAlert] = useState<string>('');

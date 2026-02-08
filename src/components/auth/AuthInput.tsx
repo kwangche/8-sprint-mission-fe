@@ -1,7 +1,6 @@
 'use client';
 import Image from 'next/image';
 import { forwardRef, useState } from 'react';
-
 interface AuthInputProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'type'> {
   id: string;
   label?: string;

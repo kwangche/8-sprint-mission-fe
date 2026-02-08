@@ -1,9 +1,9 @@
 'use client';
 import React, { useEffect, useState } from 'react';
+
 import BestProductSection from '@/components/product/BestSection';
 import ProductListSection from '@/components/product/ListSection';
 import { useProducts } from '@/providers/ProductProvider';
-
 export default function ProductPage() {
   const [searchTerm, setSearchTerm] = useState('');
   const [sortBy, setSortBy] = useState('recent');

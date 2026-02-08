@@ -1,6 +1,5 @@
 'use client';
 import React, { useEffect, useState } from 'react';
-
 interface FavoriteButtonProps {
   isLiked: boolean;
   count: number;

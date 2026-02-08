@@ -1,5 +1,4 @@
 import { api } from './apiClient';
-
 interface UploadResult {
   images: string[];
 }

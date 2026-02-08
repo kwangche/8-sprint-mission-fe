@@ -1,11 +1,11 @@
 'use client';
 
-import React, { useEffect, useRef, useCallback } from 'react';
 import Link from 'next/link';
+import React, { useEffect, useRef, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
+
 import { useArticles } from '@/providers/ArticleProvider';
 import { useComments } from '@/providers/CommentProvider';
-
 interface DropdownMenuProps {
   open?: boolean;
   onClose?: () => void;

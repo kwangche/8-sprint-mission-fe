@@ -1,7 +1,6 @@
 'use client';
-import Link from 'next/link';
 import Image from 'next/image';
-
+import Link from 'next/link';
 const AuthHeader = () => {
   return (
     <Link href="/" className=" w-full flex items-center justify-center gap-5 mb-12">

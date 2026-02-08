@@ -1,7 +1,7 @@
-import React from 'react';
 import Image from 'next/image';
-import { Article } from '@/types';
+import React from 'react';
 
+import { Article } from '@/types';
 interface BestItemProps {
   item: Article;
 }

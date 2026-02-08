@@ -1,8 +1,8 @@
 import React, { PropsWithChildren } from 'react';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
-import AuthHeader from '@/components/auth/AuthHeader';
 
+import AuthHeader from '@/components/auth/AuthHeader';
+import Footer from '@/components/Footer';
+import Header from '@/components/Header';
 export function DefaultLayout({ children }: PropsWithChildren) {
   return (
     <div className="min-h-screen flex flex-col">
