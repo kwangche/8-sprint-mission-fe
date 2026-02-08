@@ -1,16 +1,18 @@
 'use client';
-import { useEffect, useState } from 'react';
-import { useRouter } from 'next/navigation';
-import Link from 'next/link';
-import { useForm } from 'react-hook-form';
+
 import { zodResolver } from '@hookform/resolvers/zod';
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import { useEffect, useState } from 'react';
+import { useForm } from 'react-hook-form';
+import Toast from '@/components/Toast';
+import AuthInput from '@/components/auth/AuthInput';
 import SocialLogin from '@/components/auth/SocialLogin';
 import { useSignInMutation } from '@/hooks/useAuthMutations';
 import { getRefreshToken } from '@/lib/authStorage';
 import { useAuth } from '@/providers/AuthProvider';
-import Toast from '@/components/Toast';
-import AuthInput from '@/components/auth/AuthInput';
-import { loginSchema, type LoginFormData } from '@/types/validationSchemas';
+
+import type { loginSchema } from '@/types/validationSchemas';
 
 export default function LoginPage() {
   const router = useRouter();

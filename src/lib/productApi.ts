@@ -1,20 +1,49 @@
-import { api } from './apiClient';
-import { Product, ProductParams } from '@/types';
+
+
+import { buildQueryParams } from '@/lib/queryParams';
 import { productSchema, productsResponseSchema, productFavoriteResponseSchema } from '@/schemas';
+import { api, BASE_URL } from './apiClient';
+
+import type { Product, ProductParams, User } from '@/types';
+
+const normalizeImageUrl = (url: string) => {
+  if (!url) return url;
+  if (url.startsWith('http://') || url.startsWith('https://')) return url;
+  return `${BASE_URL}${url.startsWith('/') ? '' : '/'}${url}`;
+};
+
+const normalizeProduct = (product: Product & { user?: User }) => {
+  const owner = product.owner || product.user;
+  const ownerNickname = product.ownerNickname || owner?.nickname;
+  const isFavorite = product.isFavorite ?? product.isLiked ?? false;
+  const images = Array.isArray(product.images)
+    ? product.images.map(normalizeImageUrl)
+    : [];
+
+  return {
+    ...product,
+    owner,
+    ownerNickname,
+    isFavorite,
+    images,
+  };
+};
 
 /**
  * 상품 목록 조회
  */
 export const getProducts = async (params: ProductParams = {}): Promise<Product[]> => {
-  const searchParams = new URLSearchParams();
-  if (params.page) searchParams.append('page', params.page.toString());
-  if (params.pageSize) searchParams.append('pageSize', params.pageSize.toString());
-  if (params.orderBy) searchParams.append('orderBy', params.orderBy);
-  if (params.keyword) searchParams.append('keyword', params.keyword);
+  const query = buildQueryParams({
+    page: params.page,
+    pageSize: params.pageSize,
+    orderBy: params.orderBy,
+    keyword: params.keyword,
+  });
 
-  const response = await api.get(`/products?${searchParams.toString()}`);
+  const response = await api.get(`/products${query ? `?${query}` : ''}`);
   const validated = productsResponseSchema.parse(response);
-  return validated.list || [];
+  const list = validated.list || validated.products || [];
+  return list.map(normalizeProduct);
 };
 
 /** 
@@ -23,7 +52,8 @@ export const getProducts = async (params: ProductParams = {}): Promise<Product[]
 export const getBestProducts = async (): Promise<Product[]> => {
   const response = await api.get('/products?orderBy=favorite&pageSize=4');
   const validated = productsResponseSchema.parse(response);
-  return validated.list || [];
+  const list = validated.list || validated.products || [];
+  return list.map(normalizeProduct);
 };
 
 /**
@@ -31,7 +61,7 @@ export const getBestProducts = async (): Promise<Product[]> => {
  */
 export const getProduct = async (productId: string | number): Promise<Product> => {
   const response = await api.get(`/products/${productId}`);
-  return productSchema.parse(response);
+  return normalizeProduct(productSchema.parse(response));
 };
 
 /**
@@ -45,7 +75,7 @@ export const createProduct = async (productData: {
   images?: string[];
 }): Promise<Product> => {
   const response = await api.post('/products', productData, { auth: true });
-  return productSchema.parse(response);
+  return normalizeProduct(productSchema.parse(response));
 };
 
 /**
@@ -62,7 +92,7 @@ export const updateProduct = async (
   },
 ): Promise<Product> => {
   const response = await api.patch(`/products/${productId}`, productData, { auth: true });
-  return productSchema.parse(response);
+  return normalizeProduct(productSchema.parse(response));
 };
 
 /**
@@ -79,5 +109,9 @@ export const toggleProductFavorite = async (
   productId: string | number,
 ): Promise<{ isFavorite: boolean; favoriteCount: number }> => {
   const response = await api.post(`/products/${productId}/favorite`, {}, { auth: true });
-  return productFavoriteResponseSchema.parse(response) as { isFavorite: boolean; favoriteCount: number };
+  const parsed = productFavoriteResponseSchema.parse(response);
+  return {
+    isFavorite: parsed.isLiked ?? false,
+    favoriteCount: parsed.favoriteCount,
+  };
 };

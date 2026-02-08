@@ -10,11 +10,8 @@ export const uploadImages = async (files: File[]): Promise<UploadResult> => {
     formData.append('images', file);
   });
 
-  const response = (await api.post('/images/upload', formData, {
+  const response = (await api.post('/upload/images', formData, {
     auth: true,
-    headers: {
-      'Content-Type': 'multipart/form-data',
-    },
   })) as UploadResult;
 
   return response;

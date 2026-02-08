@@ -1,10 +1,9 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
-import DropdownMenu from '@/components/DropdownMenu';
+import { useEffect, useState } from 'react';
 import { useArticles } from '@/providers/ArticleProvider';
 import { useAuth } from '@/providers/AuthProvider';
-import {
+
   ArticleDetailLoading,
   ArticleDetailError,
   ArticleDetailContent,

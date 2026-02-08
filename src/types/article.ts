@@ -12,6 +12,7 @@ export interface Article {
   updatedAt: string;
   writer: User;
   isLiked?: boolean;
+  isFavorite?: boolean;
 }
 
 // 게시글 생성 데이터

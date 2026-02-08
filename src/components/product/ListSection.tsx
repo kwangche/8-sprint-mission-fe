@@ -1,9 +1,11 @@
-import React from 'react';
+
+
+import { useRouter } from 'next/navigation';
 import Button from '@/components/Button';
 import SearchAndSort from '@/components/SearchAndSort';
 import ProductItem from '@/components/product/ProductItem';
-import { useRouter } from 'next/navigation';
-import { Product } from '@/types';
+
+import type { Product } from '@/types';
 
 interface ProductListSectionProps {
   items: Product[];

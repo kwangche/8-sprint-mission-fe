@@ -1,17 +1,9 @@
 'use client';
 
-import {
-  createContext,
-  useContext,
-  useEffect,
-  useMemo,
-  useCallback,
-  useState,
-  useRef,
-  PropsWithChildren,
-} from 'react';
-import { getRefreshToken, clearTokens } from '@/lib/authStorage';
+import { createContext, useContext, useEffect, useMemo, useCallback, useState, useRef, PropsWithChildren } from 'react';
 import { refreshAccessToken } from '@/lib/authApi';
+import { getRefreshToken, clearTokens } from '@/lib/authStorage';
+
 import type { User } from '@/types';
 
 interface AuthContextType {

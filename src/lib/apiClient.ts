@@ -1,4 +1,4 @@
-const BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000';
+export const BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000';
 
 interface ApiFetchOptions extends Omit<RequestInit, 'cache'> {
   auth?: boolean;
@@ -76,10 +76,18 @@ export const api = {
     apiFetch<T>(path, { method: 'GET', ...opts }),
 
   post: <T = unknown>(path: string, body: unknown, opts?: ApiFetchOptions) =>
-    apiFetch<T>(path, { method: 'POST', body: JSON.stringify(body), ...opts }),
+    apiFetch<T>(path, {
+      method: 'POST',
+      body: body instanceof FormData ? body : JSON.stringify(body),
+      ...opts,
+    }),
 
   patch: <T = unknown>(path: string, body: unknown, opts?: ApiFetchOptions) =>
-    apiFetch<T>(path, { method: 'PATCH', body: JSON.stringify(body), ...opts }),
+    apiFetch<T>(path, {
+      method: 'PATCH',
+      body: body instanceof FormData ? body : JSON.stringify(body),
+      ...opts,
+    }),
 
   delete: <T = unknown>(path: string, opts?: ApiFetchOptions) =>
     apiFetch<T>(path, { method: 'DELETE', ...opts }),

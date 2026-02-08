@@ -1,5 +1,3 @@
-import { api } from './apiClient';
-import type {
   User,
   UpdateUserData,
   SignUpData,

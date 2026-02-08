@@ -1,5 +1,6 @@
 'use client';
-import React, { useEffect, useState } from 'react';
+
+import { useEffect, useState } from 'react';
 import BestProductSection from '@/components/product/BestSection';
 import ProductListSection from '@/components/product/ListSection';
 import { useProducts } from '@/providers/ProductProvider';

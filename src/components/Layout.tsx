@@ -1,6 +1,8 @@
-import React, { PropsWithChildren } from 'react';
-import Header from '@/components/Header';
+
+
+import { PropsWithChildren } from 'react';
 import Footer from '@/components/Footer';
+import Header from '@/components/Header';
 import AuthHeader from '@/components/auth/AuthHeader';
 
 export function DefaultLayout({ children }: PropsWithChildren) {

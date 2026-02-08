@@ -1,16 +1,17 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import { useState, useEffect } from 'react';
 import Button from '@/components/Button';
 import ConfirmModal from '@/components/ConfirmModal';
+import FavoriteButton from '@/components/product/FavoriteButton';
 import ProductCommentSection from '@/components/product/ProductCommentSection';
 import { getProduct, deleteProduct, toggleProductFavorite } from '@/lib/productApi';
-import FavoriteButton from '@/components/product/FavoriteButton';
 import { useAuth } from '@/providers/AuthProvider';
-import { Product } from '@/types';
+
+import type { Product } from '@/types';
 
 interface ProductDetailPageProps {
   productId: string;
